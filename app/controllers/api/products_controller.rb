@@ -20,4 +20,13 @@ class Api::ProductsController < ApplicationController
     @product.save
     render 'show.json.jb'
   end
+
+  def update
+    @product = Product.find_by(id: 4)
+    @product.name = "Record Player"
+    @product.price = 75
+    @product.image_url = ""
+    @product.description = "Play all your favorite records"
+    render 'show.json.jb'
+  end
 end
