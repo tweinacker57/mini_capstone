@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   #   get "/photos" => "photos#index"
   # end
   namespace :api do
-  get "/the_products" => "products#all"
-  get "/product_lookup" => "products#query"
+    get "/products" => "products#index"
+    get "/products/:id" => "products#show"
+    post "/products" => "products#create"
   end
 end
