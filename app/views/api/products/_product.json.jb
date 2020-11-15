@@ -6,6 +6,6 @@
     total: number_to_currency(product.total),
     image_url: product.image_url,
     description: product.description,
-    discounted: product.is_discounted?
+    discounted: product.is_discounted?,
     inventory: product.inventory
 }
