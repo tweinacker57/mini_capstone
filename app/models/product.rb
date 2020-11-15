@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   validates :name, :price, :description, :image_url, :inventory, presence: true
-
+  validates :description, length: { in: 10..500 }
+  validates :price, 
   
   def tax
     price * 0.09
