@@ -1,10 +1,20 @@
 class Api::ProductsController < ApplicationController
   def index
-    search_term = params[:search]
-    if search_term
-      @products = Product.where("name ILIKE '%#{search_term}%'")
+    if params[:search]
+      @products = Product.where("name ILIKE ?", "%#{params[:search]}%")
     else
       @products = Product.all
+    end
+
+    
+    if params[:sort] && params[:sort_order]
+      @products = @products.order(params[:sort] => params[:sort_order])
+    else 
+      @products = @products.order(id: :asc)
+    end
+
+    if params[:discount] == "true"
+      @products = @products.where("price < 15")
     end
     render 'index.json.jb'
   end
@@ -36,7 +46,7 @@ class Api::ProductsController < ApplicationController
     @product.image_url = params[:image_url]
     @product.description = params[:description]
     @product.save
-      render 'show.json.jb'
+    render 'show.json.jb'
     # else
     #   render json: {errors: @product.errors.full_messages}, status: :unprocessable_entity
     # end
