@@ -8,5 +8,6 @@
     discounted: product.is_discounted?,
     inventory: product.inventory,
     supplier: product.supplier.name,
-    images: product.images
+    images: product.images,
+    current_user: current_user
 }

@@ -1,5 +1,10 @@
 class Api::ProductsController < ApplicationController
   def index
+
+    p "current_user"
+    p current_user
+    p "/current_user"
+
     if params[:search]
       @products = Product.where("name ILIKE ?", "%#{params[:search]}%")
     else
@@ -29,7 +34,6 @@ class Api::ProductsController < ApplicationController
     @product = Product.new(
       name: params[:input_name], 
       price: params[:input_price], 
-      image_url: params[:input_image_url], 
       description: params[:input_description]
     )
     if @product.save
@@ -43,7 +47,6 @@ class Api::ProductsController < ApplicationController
     @product = Product.find_by(id: params[:id])
     @product.name = params[:name]
     @product.price = params[:price]
-    @product.image_url = params[:image_url]
     @product.description = params[:description]
     @product.save
     render 'show.json.jb'
