@@ -1,4 +1,8 @@
 class Api::ProductsController < ApplicationController
+  before_action :authenticate_user, only: [:create, :update, :destroy]
+  # before_action :authenticate_user, except: [:index, :show]
+
+  
   def index
 
     p "current_user"
