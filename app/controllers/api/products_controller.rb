@@ -5,9 +5,7 @@ class Api::ProductsController < ApplicationController
   
   def index
 
-    p "current_user"
-    p current_user
-    p "/current_user"
+    @products = Product.all
 
     if params[:search]
       @products = Product.where("name ILIKE ?", "%#{params[:search]}%")
@@ -25,6 +23,10 @@ class Api::ProductsController < ApplicationController
     if params[:discount] == "true"
       @products = @products.where("price < 15")
     end
+
+    # if params[:category]
+    #   @products = @products.where("%#{params[:category]}%")
+    # end
     render 'index.json.jb'
   end
 

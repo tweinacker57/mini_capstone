@@ -1,13 +1,14 @@
 {
   id: product.id,
     name: product.name,
-    price: (product.price),
-    tax: (product.tax),
-    total: (product.total),
+    price: product.price,
+    tax: product.tax,
+    total: product.total,
     description: product.description,
     discounted: product.is_discounted?,
     inventory: product.inventory,
     supplier: product.supplier.name,
     images: product.images,
-    current_user: current_user
+    current_user: current_user,
+    categories: product.categories
 }
