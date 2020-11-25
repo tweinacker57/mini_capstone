@@ -1,7 +1,7 @@
 class Api::OrdersController < ApplicationController
 
   def create
-    subtotal = params[:quantity] *
+    # subtotal = params[:quantity] *
 
     if current_user
       @order = Order.new(
